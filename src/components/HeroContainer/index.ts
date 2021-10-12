@@ -1,1 +1,1 @@
-import * from './HeroContainer'
+export * from './HeroContainer'
