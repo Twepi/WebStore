@@ -7,25 +7,55 @@
   :not(:first-child) {
     margin-left: 1.2rem;
   }
+
+}
+
+.menu {
+  position: relative;
+  padding-right: 2.5rem;
+  margin-right: 1.3rem;
+
+  &:after {
+    position: absolute;
+    display: inline-block;
+    right: 0px;
+    top: 25%;
+
+    content: "";
+    height: 1.2rem;
+    border-right-width: 1px;
+    border-right-style: solid;
+    color: white;
+  }
 }
 
 li {
   align-self: center;
+  padding: 0.7rem 1.2rem;
 
+
+  &:after {
+    content: "▼";
+    display: inline-block;
+    font-size: 0.65rem;
+    margin-left: 1rem;
+    position: relative;
+    top: -0.2rem;
+    outline: none;
+    color: white;
+  }
+
+  &:hover {
+    outline: 1px solid white;
+  }
 }
 
 a {
   color: white;
-  padding: 0.7rem 1.2rem; 
-}
+  padding-left: 1rem;
+  padding-top: 0.8rem;
+  padding-right: 0;
+  padding-bottom: 1rem;
 
-li::after {
-  content: "▼";
-  display: inline-block;
-  font-size: 0.65rem;
-  margin-left: 1rem;
-  position: relative;
-  top: -0.2rem;
-  outline: none;
-  color: white;
+  
 }

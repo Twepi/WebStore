@@ -12,7 +12,8 @@ export function MainPanel() {
           <img className={styles.logo} src="https://www.mylogohouse.com/category/fashion/img-lotus-flower-logo-design-01/lotus-flower-logo-design-800x500-color.jpg" alt="Logo" />
         </div>
 
-        <MenuItems />        
+        <MenuItems />
+        
 
         <div className={styles.blank}>
           Actions
