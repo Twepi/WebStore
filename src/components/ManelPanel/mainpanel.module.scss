@@ -1,0 +1,32 @@
+.panel {
+  padding-left: 2.7rem;
+  padding-right: 2.7rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: var(--black);
+  width: 100%;
+  font-size: 1.4rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto minmax(0px, 1fr) auto;
+  grid-template-areas: "logo menuitems actions";
+  > * {
+    align-self: center;
+  }
+}
+
+.logo {
+  max-height: 44px;
+  width: auto;
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+  object-fit: fill;
+}
+
+// delete after
+.blank {
+  color: white;
+}

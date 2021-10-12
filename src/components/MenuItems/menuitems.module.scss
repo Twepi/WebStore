@@ -1,0 +1,31 @@
+.container {
+  grid-area: menuitems;
+  justify-content: flex-end;
+  display: flex;
+  height: 100%;
+
+  :not(:first-child) {
+    margin-left: 1.2rem;
+  }
+}
+
+li {
+  align-self: center;
+
+}
+
+a {
+  color: white;
+  padding: 0.7rem 1.2rem; 
+}
+
+li::after {
+  content: "▼";
+  display: inline-block;
+  font-size: 0.65rem;
+  margin-left: 1rem;
+  position: relative;
+  top: -0.2rem;
+  outline: none;
+  color: white;
+}
