@@ -10,27 +10,19 @@ export function MenuItem({name, children}: IProps) {
   const [isHover, setIsHover] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-
-  useEffect(() => {
-    function handleHover(event: MouseEvent) {
-      if (event.target instanceof Node && ref.current?.contains(event.target)) {
-        setIsHover(true);
-      } else {
-        setIsHover(false);
-      }
-    }
-
-    document.addEventListener('mouseover', handleHover)
-
-    return () => {
+  function handleHover(event: MouseEvent) {
+    if (event.target instanceof Node && ref.current?.contains(event.target)) {
+      setIsHover(true);
+    } else {
+      setIsHover(false);
       document.removeEventListener('mouseover', handleHover);
     }
-  }, []);
-
+  }
 
   return (
     <div
       ref={ref}
+      onMouseOver={() => document.addEventListener('mouseover', handleHover)}
       className={styles.container}>
         
       <div className={styles.item}>
