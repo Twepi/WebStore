@@ -3,6 +3,7 @@ import './main.global.scss'
 import { MainPanel } from './components/ManelPanel';
 import { HeroContainer } from './components/HeroContainer/HeroContainer';
 import { ProductGrid } from './components/ProductGrid/ProductGrid';
+import { Footer } from './components/Footer/Footer';
 
 export function AppComponent() {
   return (
@@ -10,6 +11,7 @@ export function AppComponent() {
       <MainPanel />
       <HeroContainer />
       <ProductGrid />
+      <Footer />
     </div>
   );
 }

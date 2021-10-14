@@ -1,0 +1,37 @@
+.item {
+  align-self: center;
+  padding: .8rem 1.2rem;
+  outline: 1px solid transparent;
+  transition: outline 0.25s ease;
+
+  &:after {
+    content: "▼";
+    display: inline-block;
+    font-size: 0.65rem;
+    margin-left: 2rem;
+    position: relative;
+    top: -0.2rem;
+    outline: none;
+    color: white;
+  }
+
+  &:hover {
+    outline: 1px solid white;
+  }
+}
+
+.text {
+  color: white;
+}
+
+.bridge {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  outline: 1px solid black;
+}
+
+.container {
+  position: relative;
+}

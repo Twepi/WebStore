@@ -27,7 +27,29 @@
   object-fit: fill;
 }
 
-// delete after
-.blank {
-  color: white;
+.menucontainer {
+  grid-area: menuitems;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  position: relative;
+  padding-right: 1.5rem;
+  margin-right: 1.3rem;
+
+  &:not(:first-child) {
+    margin-left: 1.5rem;
+  }
+
+  &:after {
+    position: absolute;
+    display: inline-block;
+    right: 0px;
+    top: 37%;
+
+    content: "";
+    height: 1.2rem;
+    border-right-width: 1px;
+    border-right-style: solid;
+    color: white;
+  }
 }
