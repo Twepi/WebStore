@@ -1,4 +1,5 @@
 import React from 'react';
+import { MenuActions } from '../MenuActions/MenuActions';
 import { MenuItems } from '../MenuItems';
 import styles from './mainpanel.module.scss';
 
@@ -13,11 +14,7 @@ export function MainPanel() {
         </div>
 
         <MenuItems />
-        
-
-        <div className={styles.blank}>
-          Actions
-        </div>
+        <MenuActions />
       </div>
     </div>
   );

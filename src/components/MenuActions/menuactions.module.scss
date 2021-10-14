@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  grid-area: actions;
+  
+  > * {
+    display: flex;
+  }
+}
+
+.lenslink {
+  margin: 0 1.3rem;
+}
+
+.baglink {
+  margin-left: 1.3rem;
+}

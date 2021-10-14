@@ -5,21 +5,21 @@
   height: 100%;
 
   :not(:first-child) {
-    margin-left: 1.2rem;
+    margin-left: 1.5rem;
   }
 
 }
 
 .menu {
   position: relative;
-  padding-right: 2.5rem;
+  padding-right: 2.9rem;
   margin-right: 1.3rem;
 
   &:after {
     position: absolute;
     display: inline-block;
     right: 0px;
-    top: 35%;
+    top: 37%;
 
     content: "";
     height: 1.2rem;
@@ -29,10 +29,9 @@
   }
 }
 
-li {
+.listitem {
   align-self: center;
-  padding-top: 0.8rem;
-  padding-bottom: 1rem;
+  padding: .8rem 0;
   outline: 1px solid transparent;
   transition: outline 0.25s ease;
 
@@ -52,7 +51,7 @@ li {
   }
 }
 
-a {
+.text {
   color: white;
   padding: 0.7rem 1.2rem;
 }

@@ -7,14 +7,14 @@ export function MenuItems() {
   return (
     <div className={styles.menu}> 
       <ul className={styles.container}>
-        <li className={styles._}>
-          <a href="">Apparel</a>
+        <li className={styles.listitem}>
+          <a className={styles.text} href="">Apparel</a>
         </li>
-        <li className={styles._}>
-          <a href="">Homeware</a>
+        <li className={styles.listitem}>
+          <a className={styles.text} href="">Homeware</a>
         </li>
-        <li className={styles._}>
-          <a href="">Accessories</a>
+        <li className={styles.listitem}>
+          <a className={styles.text} href="">Accessories</a>
         </li>
       </ul>
     </div>
