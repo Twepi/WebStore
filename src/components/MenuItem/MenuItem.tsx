@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './menuitem.module.scss';
 
 interface IProps {
@@ -7,49 +7,44 @@ interface IProps {
 }
 
 export function MenuItem({name, children}: IProps) {
-  const [isHoverMain, setIsHoverMain] = useState(false);
-  const [isHoverBridge, setIsHoverBridge] = useState(false);
-  const [isHoverChild, setIsHoverChild] = useState(false);
+  const [isHover, setIsHover] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-  function handleIsHoverMainOver() {
-    setIsHoverMain(true);
-    setIsHoverBridge(true);
-    setIsHoverChild(true);
-  }
 
-  function handleIsHoverBridgeOver() {
-    setIsHoverBridge(true);
-    setIsHoverChild(true);
-  }
+  useEffect(() => {
+    function handleHover(event: MouseEvent) {
+      if (event.target instanceof Node && ref.current?.contains(event.target)) {
+        setIsHover(true);
+      } else {
+        setIsHover(false);
+      }
+    }
 
+    document.addEventListener('mouseover', handleHover)
+
+    return () => {
+      document.removeEventListener('mouseover', handleHover);
+    }
+  }, []);
 
 
   return (
     <div
-      onMouseOver={handleIsHoverMainOver}
-      onMouseOut={() => setIsHoverMain(false)}
+      ref={ref}
       className={styles.container}>
-      
+        
       <div className={styles.item}>
         <a className={styles.text} href="">
           {name}
         </a>
       </div>
       
-      {(isHoverMain || isHoverBridge) && (
-        <div
-          onMouseOver={handleIsHoverBridgeOver}
-          onMouseOut={() => setIsHoverBridge(false)} 
-          className={styles.bridge}></div>
+      {isHover && (
+        <div className={styles.bridge}></div>
       )}
 
-      {children && (isHoverMain || isHoverBridge || isHoverChild) && (
-        <div
-          onMouseOver={() => setIsHoverChild(true)}
-          onMouseOut={() => setIsHoverChild(false)} 
-        >
-          {children}
-        </div>
+      {children && isHover && (
+        children
       )}
     </div>
   );
