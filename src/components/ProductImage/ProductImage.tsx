@@ -1,13 +1,17 @@
 import React from 'react';
 import styles from './productimage.module.scss';
 
-export function ProductImage() {
+interface IProps{
+  img: string;
+}
+
+export function ProductImage({ img }: IProps) {
   return (
     <div className={styles.container}>
       <img
         className={styles.image} 
-        src="https://vangogh.teespring.com/v3/image/pM0lbpbIZKYPi09CRmSJokOUE-A/560/560.jpg" 
-        alt="" 
+        src={img} 
+        alt="123" 
         />
     </div>
   );

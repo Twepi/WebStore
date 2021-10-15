@@ -1,12 +1,18 @@
 import React from 'react';
 import styles from './producttitle.module.scss';
 
-export function ProductTitle() {
+interface IProps{
+  name: string;
+  desc: string;
+  price: string;
+}
+
+export function ProductTitle({ name, desc, price }: IProps) {
   return (
     <div className={styles.container}>
-      <strong>Tiny Potato Face</strong>
-      <p>Women's Classic Tee</p>
-      <strong>$21.99</strong>
+      <strong>{name}</strong>
+      <p>{desc}</p>
+      <strong>{price}</strong>
     </div>
   );
 }

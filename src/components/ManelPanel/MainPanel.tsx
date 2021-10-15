@@ -5,7 +5,6 @@ import { MenuItem } from '../MenuItem/MenuItem';
 import styles from './mainpanel.module.scss';
 
 export function MainPanel() {
-  const test = ['test', 'milkshake', 'putlo']
 
   return (
     <div className={styles.panel}>
@@ -16,10 +15,16 @@ export function MainPanel() {
 
       <div className={styles.menucontainer}>
         <MenuItem name='Apparel'>
-          <FlyoutMenu items={test}/>
+          <FlyoutMenu items={["unisex / men's t-shirts", "women's t-shirts", "hoodies & sweatshirts"]}/>
         </MenuItem>
-        <MenuItem name='Homeware' />
-        <MenuItem name='Accessories' />
+
+        <MenuItem name='Homeware'>
+          <FlyoutMenu items={["pillows", "bath", "bedding"]}/>
+        </MenuItem>
+
+        <MenuItem name='Accessories'>
+          <FlyoutMenu items={["face masks", "phone cases", "socks"]}/>
+        </MenuItem>
       </div>
 
         <MenuActions />

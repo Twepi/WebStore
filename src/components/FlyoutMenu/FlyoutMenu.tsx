@@ -9,9 +9,11 @@ export function FlyoutMenu({items}: IProps) {
   
   return (
     <div className={styles.container}>
-      <ul>
+      <ul className={styles.listContainer}>
         {items.map((name, index) => (
-          <li key={index}>{name}</li>
+          <li key={index}>
+            <a href="">{name}</a>
+          </li>
         ))}
       </ul>
     </div>

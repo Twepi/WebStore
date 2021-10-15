@@ -13,3 +13,9 @@
 
   top: 5rem;
 }
+
+.listContainer {
+  :not(:last-child) {
+    margin-bottom: 2.7rem;
+  }
+}
