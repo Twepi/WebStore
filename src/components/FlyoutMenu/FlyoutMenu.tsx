@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './flyoutmenu.module.scss';
 
 interface IProps {
@@ -12,7 +13,7 @@ export function FlyoutMenu({items}: IProps) {
       <ul className={styles.listContainer}>
         {items.map((name, index) => (
           <li key={index}>
-            <a href="">{name}</a>
+            <Link to={'/' + name.replaceAll(/\s\//g, '').replaceAll(/\s{2,}/g, '').replaceAll(/[\s']/g, '-')}>{name}</Link>
           </li>
         ))}
       </ul>

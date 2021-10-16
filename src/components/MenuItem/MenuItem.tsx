@@ -10,6 +10,7 @@ interface IProps {
 export function MenuItem({name, children}: IProps) {
   const [isHover, setIsHover] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const linkName = name.toLocaleLowerCase();
 
   function handleHover(event: MouseEvent) {
     if (event.target instanceof Node && ref.current?.contains(event.target)) {
@@ -21,17 +22,17 @@ export function MenuItem({name, children}: IProps) {
   }
 
   return (
-    <Link to={'/' + name}>
       <div
         ref={ref}
         onMouseOver={() => document.addEventListener('mouseover', handleHover)}
         className={styles.container}>
-          
-        <div className={styles.item}>
-          <div className={styles.text}>
-            {name}
+        <Link to={linkName}>
+          <div className={styles.item}>
+            <div className={styles.text}>
+              {name}
+            </div>
           </div>
-        </div>
+        </Link>
         
         {isHover && (
           <div className={styles.bridge}></div>
@@ -41,7 +42,6 @@ export function MenuItem({name, children}: IProps) {
           children
         )}
       </div>
-    </Link>
 
   );
 }
