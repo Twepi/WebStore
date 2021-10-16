@@ -2,9 +2,17 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { ProductBox } from '../ProductBox';
 import styles from './productgrid.module.scss';
-import data from '../../data/products.json'
 
-export function ProductGrid() {
+interface IProps {
+  data: {
+    img: string;
+    name: string;
+    desc: string;
+    price: string;
+  }
+}
+
+export function ProductGrid({data}: IProps) {
 
   const bottomOfList = useRef<HTMLDivElement>(null);
 
@@ -15,10 +23,10 @@ export function ProductGrid() {
       {[...Array(10)].map((_, index) => (
         <ProductBox
             key={index}
-            img={data.homeProd.img}
-            name={data.homeProd.name}
-            desc={data.homeProd.desc}
-            price={data.homeProd.price}
+            img={data.img}
+            name={data.name}
+            desc={data.desc}
+            price={data.price}
         />
       ))}
 
