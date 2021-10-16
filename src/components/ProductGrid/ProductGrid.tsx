@@ -2,29 +2,23 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { ProductBox } from '../ProductBox';
 import styles from './productgrid.module.scss';
+import data from '../../data/products.json'
 
 export function ProductGrid() {
 
   const bottomOfList = useRef<HTMLDivElement>(null);
-  const tempArr = [...Array(10)];
-  const staticInfo = {
-    img: '',
-    name: 'Tiny Potato Face',
-    desc: 'Classic Tee',
-    price: '$20',
-  }
 
   return (
     
     <div className={styles.cont}>
 
-      {tempArr.map(ind => (
+      {[...Array(10)].map((_, index) => (
         <ProductBox
-            key={ind}
-            img={staticInfo.img}
-            name={staticInfo.name}
-            desc={staticInfo.desc}
-            price={staticInfo.price}
+            key={index}
+            img={data.homeProd.img}
+            name={data.homeProd.name}
+            desc={data.homeProd.desc}
+            price={data.homeProd.price}
         />
       ))}
 

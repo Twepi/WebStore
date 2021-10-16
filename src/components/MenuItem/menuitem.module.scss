@@ -3,6 +3,8 @@
   padding: .8rem 1.2rem;
   outline: 1px solid transparent;
   transition: outline 0.25s ease;
+  display: flex;
+  position: relative;
 
   &:after {
     content: "▼";
@@ -10,7 +12,7 @@
     font-size: 0.65rem;
     margin-left: 2rem;
     position: relative;
-    top: -0.2rem;
+    top: .7rem;
     outline: none;
     color: white;
   }

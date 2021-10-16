@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './menuitem.module.scss';
+import { Link } from 'react-router-dom';
 
 interface IProps {
   name: string;
@@ -20,24 +21,27 @@ export function MenuItem({name, children}: IProps) {
   }
 
   return (
-    <div
-      ref={ref}
-      onMouseOver={() => document.addEventListener('mouseover', handleHover)}
-      className={styles.container}>
+    <Link to={'/' + name}>
+      <div
+        ref={ref}
+        onMouseOver={() => document.addEventListener('mouseover', handleHover)}
+        className={styles.container}>
+          
+        <div className={styles.item}>
+          <div className={styles.text}>
+            {name}
+          </div>
+        </div>
         
-      <div className={styles.item}>
-        <a className={styles.text} href="">
-          {name}
-        </a>
-      </div>
-      
-      {isHover && (
-        <div className={styles.bridge}></div>
-      )}
+        {isHover && (
+          <div className={styles.bridge}></div>
+        )}
 
-      {children && isHover && (
-        children
-      )}
-    </div>
+        {children && isHover && (
+          children
+        )}
+      </div>
+    </Link>
+
   );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FlyoutMenu } from '../FlyoutMenu';
 import { MenuActions } from '../MenuActions';
 import { MenuItem } from '../MenuItem/MenuItem';
@@ -9,9 +10,9 @@ export function MainPanel() {
   return (
     <div className={styles.panel}>
       <div className={styles.container}>
-        <div>
+        <Link to='/'>
           <img className={styles.logo} src="https://www.mylogohouse.com/category/fashion/img-lotus-flower-logo-design-01/lotus-flower-logo-design-800x500-color.jpg" alt="Logo" />
-        </div>
+        </Link>
 
       <div className={styles.menucontainer}>
         <MenuItem name='Apparel'>

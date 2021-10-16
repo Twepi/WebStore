@@ -25,6 +25,10 @@
   display: flex;
   align-items: center;
   object-fit: fill;
+
+  &::selection {
+    background-color: transparent;
+  }
 }
 
 .menucontainer {
