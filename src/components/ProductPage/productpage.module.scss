@@ -11,6 +11,8 @@
 
 .preview {
   display: block;
+  object-fit: contain;
+  max-height: 50vh;
   width: 100%;
 }
 
@@ -63,4 +65,12 @@
   border-radius: 50%;
   box-shadow: 0 0 4px 0 rgb(0 0 0 / 40%);
   background-color: rgb(255, 213, 213);
+}
+
+.sizeListing {
+  width: 70%;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
