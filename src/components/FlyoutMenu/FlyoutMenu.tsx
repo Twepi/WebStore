@@ -13,7 +13,11 @@ export function FlyoutMenu({items}: IProps) {
       <ul className={styles.listContainer}>
         {items.map((name, index) => (
           <li key={index}>
-            <Link to={'/' + name.replaceAll(/\s\//g, '').replaceAll(/\s{2,}/g, '').replaceAll(/[\s']/g, '-')}>{name}</Link>
+            <Link to={'/' + name.replaceAll(/\s[&\/]/g, '')
+                                .replaceAll(/\s{2,}/g, '')
+                                .replaceAll(/[\s']/g, '-')}
+            >
+              {name}</Link>
           </li>
         ))}
       </ul>
