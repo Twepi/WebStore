@@ -11,7 +11,6 @@ export function AccrodionButton({ children }: IProps) {
 
   const handleClick = () => {
     if(ref.current) {
-      console.log('1: ', clicked)
       setClicked(!clicked);
       if (clicked===true) {
         ref.current.style.opacity = '1';
@@ -20,7 +19,6 @@ export function AccrodionButton({ children }: IProps) {
         ref.current.style.opacity ='0';
         ref.current.style.height = '0';
       }
-      console.log('2: ', clicked)
     }
   }
 
