@@ -36,7 +36,7 @@ export function AccrodionButton({ children }: IProps) {
         </span>
       </span>
       <div ref={ref} className={styles.content} style={{}}>
-          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas </div>
+          <div className={styles.desc}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas </div>
         </div>
     </button>
   );
