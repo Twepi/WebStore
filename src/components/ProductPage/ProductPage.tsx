@@ -1,4 +1,4 @@
-import React, { FormEventHandler, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { addToCart } from '../../store/cart/actions';
@@ -10,7 +10,7 @@ import styles from './productpage.module.scss';
 export function ProductPage() {
   const productInfo = useSelector<RootState, IProduct>(state => state.product)
   const [size, setSize] = useState('S(4)');
-  const refSelect = useRef<HTMLSelectElement>(null);
+  const [amount, setAmount] = useState(1);
   const dispatch = useDispatch();
 
   const getSize = (str: string, e: React.MouseEvent<HTMLDivElement>) => {
@@ -19,16 +19,19 @@ export function ProductPage() {
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    if (refSelect.current) {
-      dispatch(addToCart({
-        img: productInfo.img,
-        name: productInfo.name,
-        desc: productInfo.desc,
-        price: productInfo.price,
-        amount: Number(refSelect.current.value),
-        size: size,
-       }));
-    }
+  
+    dispatch(addToCart({
+      img: productInfo.img,
+      name: productInfo.name,
+      desc: productInfo.desc,
+      price: productInfo.price,
+      amount: amount,
+      size: size,
+      }));
+  }
+
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setAmount(Number(event.target.value));
   }
 
   return (
@@ -72,7 +75,7 @@ export function ProductPage() {
           <div style={{marginBottom: '3rem'}}>
             <div style={{marginRight: '2rem', display: 'flex'}}>
               <div className={styles.dropdown}>
-                <select ref={refSelect} name="dropdown" id="dropdown" className={styles.dropdownSelect}>
+                <select onChange={handleSelectChange} name="dropdown" id="dropdown" className={styles.dropdownSelect}>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
