@@ -1,6 +1,7 @@
 import React, { FormEventHandler, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
+import { addToCart } from '../../store/cart/actions';
 import { IProduct } from '../../store/product/actions';
 import { AccrodionButton } from '../AccordionButton';
 import { SizeBox } from '../SizeBox';
@@ -10,6 +11,7 @@ export function ProductPage() {
   const productInfo = useSelector<RootState, IProduct>(state => state.product)
   const [size, setSize] = useState('S(4)');
   const refSelect = useRef<HTMLSelectElement>(null);
+  const dispatch = useDispatch();
 
   const getSize = (str: string, e: React.MouseEvent<HTMLDivElement>) => {
     setSize(str);
@@ -17,9 +19,15 @@ export function ProductPage() {
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    console.log('size = ', size);
     if (refSelect.current) {
-      console.log('amount = ', refSelect.current.value)
+      dispatch(addToCart({
+        img: productInfo.img,
+        name: productInfo.name,
+        desc: productInfo.desc,
+        price: productInfo.price,
+        amount: Number(refSelect.current.value),
+        size: size,
+       }));
     }
   }
 
