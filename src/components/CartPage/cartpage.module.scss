@@ -1,5 +1,16 @@
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 7fr 3fr;
   width: 80%;
   margin: 0 auto;
+  padding-top: 10rem;
+}
+
+.header {
+  text-transform: uppercase;
+  font-size: 3.6rem;
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+  line-height: 1.17;
 }

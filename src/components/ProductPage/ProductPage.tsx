@@ -27,7 +27,7 @@ export function ProductPage() {
       price: productInfo.price,
       amount: amount,
       size: size,
-      }));
+    }));
   }
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

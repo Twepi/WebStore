@@ -11,18 +11,23 @@ export function CartPage() {
 
   return (
     <div className={styles.container}>
-      {products.map((item, index) => {
-        <CartItem 
-          key={index}
-          name={item.name}
-          desc={item.desc}
-          img={item.img}
-          price={item.price}
-          amount={item.amount}
-          size={item.size}
-        />
-      })}
-      <div>adadmaskmd;alsd</div>
+      <div>
+        <div className={styles.header}>my cart</div>  
+        {products.map((item, index) => (
+          <CartItem 
+            key={index}
+            name={item.name}
+            desc={item.desc}
+            img={item.img}
+            price={item.price}
+            amount={item.amount}
+            size={item.size}
+          />
+        ))}
+      </div>
+      <div>
+        
+      </div>
     </div>
   );
 }
