@@ -13,6 +13,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { rootReducer } from './store';
 import { Provider } from 'react-redux';
+import { CartPage } from './components/CartPage';
 
 // @ts-ignore
 const store = createStore(rootReducer, composeWithDevTools(
@@ -93,6 +94,10 @@ export function AppComponent() {
 
         <Route path='/productpage'>
           <ProductPage />
+        </Route>
+
+        <Route path='/cart'>
+          <CartPage/>
         </Route>
 
         <Footer />
