@@ -1,8 +1,38 @@
-.header {
-  text-transform: uppercase;
-  font-size: 3.6rem;
+.container {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.preview {
+  max-width: 80%;
+  max-height: 17rem;
+  display: flex;
+  object-fit: contain;
+}
+
+.productBlock {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.title {
+  font-size: 2.3rem;
+  font-weight: 500;
   font-family: "Roboto Condensed", sans-serif;
+  line-height: 1.4;
   letter-spacing: 0.02em;
-  font-weight: 700;
-  line-height: 1.17;
+  text-transform: uppercase;
+}
+
+.items {
+  & > *{
+    color: #767676;
+    font-size: 1.2rem;
+    margin: .2rem 0;
+  }
+  margin-bottom: 3rem;
+}
+
+.remove {
+  text-decoration: underline;
 }
