@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { addToCart } from '../../store/cart/actions';
@@ -12,6 +12,39 @@ export function ProductPage() {
   const [size, setSize] = useState('S(4)');
   const [amount, setAmount] = useState(1);
   const dispatch = useDispatch();
+
+  const [rippleStyle, setRippleStyle] = useState({});
+  let timerId: NodeJS.Timeout;
+  const rippleRef = useRef(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [state, setState] = useState('');
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if(buttonRef.current) {
+      setState('');
+      clearTimeout(timerId);
+      const size = buttonRef.current.offsetWidth;
+      const pos = buttonRef.current.getBoundingClientRect();
+      const x = e.pageX - pos.left - size;
+      const y = e.pageY - pos.top - size;
+
+      const newRippleStyle = {
+        top: `${y}px`,
+        left: `${x}px`,
+        width: `${size * 2}px`,
+        height: `${size * 2}px`,
+      }
+
+      setRippleStyle(newRippleStyle);
+
+      setState(`${styles.rippleStart} ${styles.rippleActive}`);
+
+      timerId = setTimeout(() => {
+        setState('');
+      }, 2000);
+    }
+
+  }
 
   const getSize = (str: string, e: React.MouseEvent<HTMLDivElement>) => {
     setSize(str);
@@ -88,7 +121,14 @@ export function ProductPage() {
                   <option value="10">10+</option>
                 </select>
               </div>
-              <button onClick={handleClick} type='submit' className={styles.submitButton}>Add to cart</button>
+              <button ref={buttonRef} onMouseDown={handleMouseDown} onClick={handleClick} type='submit' className={styles.submitButton}> 
+                Add to cart
+                <span
+                  style={rippleStyle}
+                  ref={rippleRef}
+                  className={`${styles.ripple} ${state}`}
+                ></span> 
+              </button>
             </div>
           </div>
         </form>
