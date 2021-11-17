@@ -16,17 +16,10 @@ export function ProductPage() {
   const [amount, setAmount] = useState(1);
   const dispatch = useDispatch();
 
-  const [rippleStyle, setRippleStyle] = useState({});
-  let timerId: NodeJS.Timeout;
-  const rippleRef = useRef(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [state, setState] = useState('');
-
-  
 
   const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
     if(buttonRef.current) {
-      setState('');
       const pos = buttonRef.current.getBoundingClientRect();
       const x = e.pageX - pos.left;
       const y = e.pageY - pos.top;
@@ -41,10 +34,6 @@ export function ProductPage() {
       ripple.setAttribute('class',`${styles.ripple}`);
       css(ripple, newRippleStyle);
       buttonRef.current.appendChild(ripple);
-
-      setRippleStyle(newRippleStyle);
-
-      setState(`${styles.rippleStart} ${styles.rippleActive}`);
 
       setTimeout(() => {
         buttonRef.current?.removeChild(ripple);
