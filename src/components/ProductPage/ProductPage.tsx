@@ -27,7 +27,6 @@ export function ProductPage() {
       const newRippleStyle = {  
         top: `${y}px`,
         left: `${x}px`,
-
       }
       
       const ripple = document.createElement("span");
@@ -37,7 +36,7 @@ export function ProductPage() {
 
       setTimeout(() => {
         buttonRef.current?.removeChild(ripple);
-      }, 5000);
+      }, 3000);
     }
 
   }

@@ -119,18 +119,20 @@
   }
 }
 
-$animation-duration: 2000ms;
+
+$persian-rose: #ff1ead;
+$malachite: #53dd6c;
+$french-violet: #6622cc;
+$wild-blue-yonder: #b8b8d1;
+
+$ripple: $persian-rose;
+$shadow: $malachite; 
 
 .submitButton {
   height: 4.4rem;
-  //display: flex;
-  //align-items: center;
-  //justify-content: center;
   padding: 0 35px;
   font-weight: 700;
-  //border-width: .1rem;
-  //border-style: solid;
-  cursor: pointer;
+  cursor: auto;
   flex: 1 1 ;
   color: rgb(255, 255, 255);
   background-color: rgb(33, 32, 32);
@@ -140,29 +142,37 @@ $animation-duration: 2000ms;
   position: relative;
   overflow: hidden;
   z-index: 0;
-
+  user-select: none;
+  outline: 0;
+  box-shadow: 0 0 0 0 rgba($shadow, 0.5);
+	transition: box-shadow 150ms ease-out;
+	&:hover {
+		box-shadow: 0 0 0 8px rgba($shadow, 0.5);
+	}
  
 }
 
 .ripple {
-  background-color: #ff1ead;
+  background-color: $ripple;
   border-radius: 50%;
   pointer-events: none;
   position: absolute;
-  transform: translateX(-100%) translateY(-100%);
-  width: 1rem;
-	height: 1rem;
+  transform: translateX(-50%) translateY(-50%);
+  width: 2.3rem;
+	height: 2.3rem;
   mix-blend-mode: screen;
   animation: 
-            ripple 1250ms ease-out forwards, 
-            fade 1500ms ease-out forwards;
+            ripple 1500ms ease-out forwards, 
+            fade 2000ms ease-out forwards;
 }
 
 @keyframes ripple {
-  0% { transform: translate(-100%, 100%); }
-  80% { transform: translate(-100%, 100%) scale(50); }
-  100% { transform: translate(-100%, 100%) scale(50);
-        opacity: 0; }
+  from {
+    transform: scale(0)
+  }
+  to {
+    transform: scale(50)
+  }
 }
 
 @keyframes fade {
