@@ -5,7 +5,6 @@
 }
 
 .sizeBox {
-  $t: .2s;
   position: relative;
   display: flex;
   justify-content: center;
@@ -29,7 +28,10 @@
   border-radius: 0px;
 
   &:checked + .sizeBox {
+    $t: .2s;
     background-color: black;
     color: white;
+    transition: background-color $t ease-in-out, 
+              color $t ease-in-out;  
   }
 }

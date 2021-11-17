@@ -1,8 +1,15 @@
+$persian-rose: #ff1ead;
+$malachite: #53dd6c;
+$french-violet: #6622cc;
+$wild-blue-yonder: #b8b8d1;
+
+$shadow: $french-violet; 
+
+
 .container {
   position: absolute;
   padding: 2rem 4.5rem 2rem 1.5rem;
   background-color: #fff;
-  box-shadow: 4px 4px 24px rgb(0 0 0 / 15%);
 
   font-size: 1.5rem;
   font-weight: 100;
@@ -12,6 +19,35 @@
   text-transform: uppercase;
 
   top: 5rem;
+
+  
+  li {
+    position: relative;
+    border-bottom: 2px solid transparent;
+    transform: tran;
+    &:hover {
+      
+      animation: showLine .3s ease-in forwards;
+    }
+    &:focus{
+      color: red;
+    }
+
+  }
+}
+
+@keyframes showLine {
+  from {
+    width: 0;
+    border-color: $french-violet;
+  }
+
+  to {
+    width: 100%;
+    border-color: $french-violet;
+  }
+
+  
 }
 
 .listContainer {
