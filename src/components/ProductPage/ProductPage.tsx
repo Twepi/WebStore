@@ -1,8 +1,11 @@
+import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
+import { splitBsPropsAndOmit } from 'react-bootstrap/lib/utils/bootstrapUtils';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { addToCart } from '../../store/cart/actions';
 import { IProduct } from '../../store/product/actions';
+import { css } from '../../utils';
 import { AccrodionButton } from '../AccordionButton';
 import { SizeBox } from '../SizeBox';
 import styles from './productpage.module.scss';
@@ -19,29 +22,33 @@ export function ProductPage() {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [state, setState] = useState('');
 
+  
+
   const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
     if(buttonRef.current) {
       setState('');
-      clearTimeout(timerId);
-      const size = buttonRef.current.offsetWidth;
       const pos = buttonRef.current.getBoundingClientRect();
-      const x = e.pageX - pos.left - size;
-      const y = e.pageY - pos.top - size;
+      const x = e.pageX - pos.left;
+      const y = e.pageY - pos.top;
 
-      const newRippleStyle = {
+      const newRippleStyle = {  
         top: `${y}px`,
         left: `${x}px`,
-        width: `${size * 2}px`,
-        height: `${size * 2}px`,
+
       }
+      
+      const ripple = document.createElement("span");
+      ripple.setAttribute('class',`${styles.ripple}`);
+      css(ripple, newRippleStyle);
+      buttonRef.current.appendChild(ripple);
 
       setRippleStyle(newRippleStyle);
 
       setState(`${styles.rippleStart} ${styles.rippleActive}`);
 
-      timerId = setTimeout(() => {
-        setState('');
-      }, 2000);
+      setTimeout(() => {
+        buttonRef.current?.removeChild(ripple);
+      }, 5000);
     }
 
   }
@@ -123,11 +130,6 @@ export function ProductPage() {
               </div>
               <button ref={buttonRef} onMouseDown={handleMouseDown} onClick={handleClick} type='submit' className={styles.submitButton}> 
                 Add to cart
-                <span
-                  style={rippleStyle}
-                  ref={rippleRef}
-                  className={`${styles.ripple} ${state}`}
-                ></span> 
               </button>
             </div>
           </div>

@@ -139,28 +139,33 @@ $animation-duration: 2000ms;
   font-size: 1.6rem;
   position: relative;
   overflow: hidden;
-  //z-index: 0;
+  z-index: 0;
 
-  .ripple {
-    background-color: #ff1ead;
-    border-radius: 50%;
-    pointer-events: none;
-    position: absolute;
-    transform: scale(0);
-    z-index: 1;
-  }
+ 
+}
 
-  div {
-    z-index: 2;
-  }
+.ripple {
+  background-color: #ff1ead;
+  border-radius: 50%;
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(-100%) translateY(-100%);
+  width: 1rem;
+	height: 1rem;
+  mix-blend-mode: screen;
+  animation: 
+            ripple 1250ms ease-out forwards, 
+            fade 1500ms ease-out forwards;
+}
 
-  .rippleActive {
-    transform: scale(2);
-    transition: transform $animation-duration, opacity $animation-duration;
-    opacity: 0;
-  }
+@keyframes ripple {
+  0% { transform: translate(-100%, 100%); }
+  80% { transform: translate(-100%, 100%) scale(50); }
+  100% { transform: translate(-100%, 100%) scale(50);
+        opacity: 0; }
+}
 
-  .rippleStart {
-    transform: scale(2);
-  }
+@keyframes fade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
