@@ -7,6 +7,7 @@ import { addToCart } from '../../store/cart/actions';
 import { IProduct } from '../../store/product/actions';
 import { css } from '../../utils';
 import { AccrodionButton } from '../AccordionButton';
+import { CostumSelect } from '../CostumSelect';
 import { SizeBox } from '../SizeBox';
 import styles from './productpage.module.scss';
 
@@ -116,6 +117,7 @@ export function ProductPage() {
                   <option value="10">10+</option>
                 </select>
               </div>
+              <CostumSelect></CostumSelect>
               <button ref={buttonRef} onMouseDown={handleMouseDown} onClick={handleClick} type='submit' className={styles.submitButton}> 
                 Add to cart
               </button>
