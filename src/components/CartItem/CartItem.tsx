@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { ICartProduct } from '../../store/cart/actions';
+import { useDispatch } from 'react-redux';
+import { delFromCart, ICartProduct } from '../../store/cart/actions';
 import styles from './cartitem.module.scss'
 
-export function CartItem({ name, desc, img, price, amount, size }: ICartProduct) {
+export function CartItem({ name, id, desc, img, price, amount, size }: ICartProduct) {
 
   const [ amountNow, setAmountNow ] = useState(amount);
+  const dispatch = useDispatch();
 
   const changedAmount = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setAmountNow(Number(event.target.value));
+  }
+
+  const removeFromCart = () => {
+    dispatch(delFromCart(id))
   }
 
   return(
@@ -21,7 +27,7 @@ export function CartItem({ name, desc, img, price, amount, size }: ICartProduct)
             <div>Size - {size}</div>
             <div>Color - Pink</div>
           </div>
-          <a className={styles.remove}>Remove</a>
+          <button onClick={removeFromCart} className={styles.remove}>Remove</button>
         </div>
         <div className={styles.controls}>
           <div className={styles.quantity}>

@@ -16,6 +16,7 @@ export function CartPage() {
         {products.map((item, index) => (
           <CartItem 
             key={index}
+            id={index}
             name={item.name}
             desc={item.desc}
             img={item.img}
