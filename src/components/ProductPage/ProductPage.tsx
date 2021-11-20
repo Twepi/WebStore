@@ -7,7 +7,7 @@ import { addToCart } from '../../store/cart/actions';
 import { IProduct } from '../../store/product/actions';
 import { css } from '../../utils';
 import { AccrodionButton } from '../AccordionButton';
-import { CostumSelect } from '../CostumSelect';
+import { CustomSelect } from '../CustomSelect';
 import { SizeBox } from '../SizeBox';
 import styles from './productpage.module.scss';
 
@@ -103,21 +103,9 @@ export function ProductPage() {
 
           <div style={{marginBottom: '3rem'}}>
             <div style={{marginRight: '2rem', display: 'flex'}}>
-              <div className={styles.dropdown}>
-                <select onChange={handleSelectChange} name="dropdown" id="dropdown" className={styles.dropdownSelect}>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10+</option>
-                </select>
+              <div style={{marginRight: '2rem'}}>
+                <CustomSelect getAmount={setAmount}></CustomSelect>
               </div>
-              <CostumSelect></CostumSelect>
               <button ref={buttonRef} onMouseDown={handleMouseDown} onClick={handleClick} type='submit' className={styles.submitButton}> 
                 Add to cart
               </button>

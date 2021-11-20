@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { delFromCart, ICartProduct } from '../../store/cart/actions';
+import { CustomSelect } from '../CustomSelect';
 import styles from './cartitem.module.scss'
 
 export function CartItem({ name, id, desc, img, price, amount, size }: ICartProduct) {
@@ -32,25 +33,8 @@ export function CartItem({ name, id, desc, img, price, amount, size }: ICartProd
         <div className={styles.controls}>
           <div className={styles.quantity}>
             <div className={styles.dropdown}>
-              <label style={{fontSize: "1.2rem"}} htmlFor="dropdown-cart">Quantity</label>
-              <select 
-                name="dropdown-cart"
-                id="dropdown-cart"
-                className={styles.dropdownSelect}
-                value={amountNow}
-                onChange={changedAmount}
-              >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10+</option>
-              </select>
+              <label style={{fontSize: "1.2rem"}}>Quantity</label>
+              <CustomSelect getAmount={setAmountNow}></CustomSelect>
             </div>
           </div>
           <div className={styles.price}>${Number(price.replaceAll('$',''))*amountNow}</div>

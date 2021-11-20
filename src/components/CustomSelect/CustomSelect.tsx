@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from "./costumselect.scss";
+import styles from "./customselect.scss";
 
-export function CostumSelect() {
+interface ICostumSelect {
+  getAmount: (amount: number) => void;
+}
+
+export function CustomSelect({ getAmount }: ICostumSelect) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<String | null>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -11,6 +15,7 @@ export function CostumSelect() {
   const toggling = () => setIsOpen(!isOpen);
   const handleOptionClicked = (value: string) => {
     setSelectedOption(value);
+    getAmount(Number(value));
     setIsOpen(false);
     console.log(selectedOption);
   };
