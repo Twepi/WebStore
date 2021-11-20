@@ -17,7 +17,6 @@ export function CustomSelect({ getAmount }: ICostumSelect) {
     setSelectedOption(value);
     getAmount(Number(value));
     setIsOpen(false);
-    console.log(selectedOption);
   };
 
   const checkClick = (event: MouseEvent) => {

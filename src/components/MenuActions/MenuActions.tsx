@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { RootState } from '../../store';
+import { ICartProduct } from '../../store/cart/actions';
 import styles from './menuactions.module.scss'
 
 export function MenuActions() {
+
+  const cart = useSelector<RootState, ICartProduct[]>(state => state.cart)
+  const cartAmount = cart.length;
+  
 
   return (
     <div className={styles.container}>
@@ -15,6 +22,9 @@ export function MenuActions() {
       </Link>
 
       <Link className={styles.baglink} to="/cart">
+        {cartAmount !== 0 && (
+          <div style={{color: "white"}} className={styles.cartAmount}>{cartAmount}</div>
+        )}
         <svg className={styles.bag}
         xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <g clipPath="url(#clip0)">

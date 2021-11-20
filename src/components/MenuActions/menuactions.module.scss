@@ -13,4 +13,13 @@
 
 .baglink {
   margin-left: 1.3rem;
+  position: relative;
+}
+
+.cartAmount {
+  position: absolute;
+  top: -1.4rem;
+  right: -1.3rem;
+  font-weight: 500;
+  font-family: Muli, sans-serif;
 }
