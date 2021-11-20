@@ -1,0 +1,41 @@
+$persian-rose: #ff1ead;
+$malachite: #53dd6c;
+$french-violet: #6622cc;
+$wild-blue-yonder: #b8b8d1;
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  min-width: 7rem;
+  min-height: 2rem;
+
+  & > span {
+    animation: bounce .6s infinite alternate;
+    background-color: $french-violet;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    margin: 0 8px;
+
+    transform: translate3d(0);
+
+    &:nth-child(2) {
+      background-color: $wild-blue-yonder;
+      animation-delay: .2s;
+    }
+    &:nth-child(3) {
+      animation-delay: .4s;
+    }
+  } 
+}
+
+@keyframes bounce {
+  to {
+    width: 16px;
+    height: 16px;
+    transform: translate3d(0, -16px, 0);
+  }
+}

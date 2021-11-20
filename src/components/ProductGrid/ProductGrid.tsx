@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
+import { LoaderAnim } from '../LoaderAnim';
 import { ProductBox } from '../ProductBox';
 import styles from './productgrid.module.scss';
 
@@ -26,7 +27,7 @@ export function ProductGrid({data}: IProps) {
         const answer = await new Promise((resolve, reject) => {
           setTimeout(() => {
             resolve([...Array(8)])
-          }, 1000)
+          }, 2000)
         })
         setProducts(prevChild => prevChild.concat(answer))
 
@@ -82,7 +83,7 @@ export function ProductGrid({data}: IProps) {
 
       <div ref={bottomOfList}></div>
       {loading && (
-        <div className={styles.loading}>Загрузка...</div>
+        <LoaderAnim/>
       )}
     </div>
   );

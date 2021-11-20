@@ -14,6 +14,7 @@ import thunk from 'redux-thunk';
 import { rootReducer } from './store';
 import { Provider } from 'react-redux';
 import { CartPage } from './components/CartPage';
+import { LoaderAnim } from './components/LoaderAnim';
 
 // @ts-ignore
 const store = createStore(rootReducer, composeWithDevTools(
