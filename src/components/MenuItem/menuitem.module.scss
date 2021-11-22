@@ -18,7 +18,10 @@
   }
 
   &:hover {
-    outline: 1px solid white;
+    outline: 1px solid white!important;
+    .text {
+      font-weight: 600;
+    }
   }
 }
 
@@ -34,4 +37,8 @@
 
 .container {
   position: relative;
+}
+
+.linksList {
+  outline: 1px solid black;
 }

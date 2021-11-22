@@ -34,7 +34,7 @@ export function CartItem({ name, id, desc, img, price, amount, size }: ICartProd
           <div className={styles.quantity}>
             <div className={styles.dropdown}>
               <label style={{fontSize: "1.2rem"}}>Quantity</label>
-              <CustomSelect getAmount={setAmountNow}></CustomSelect>
+              <CustomSelect value={amount} getAmount={setAmountNow}></CustomSelect>
             </div>
           </div>
           <div className={styles.price}>${Number(price.replaceAll('$',''))*amountNow}</div>

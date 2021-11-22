@@ -18,6 +18,7 @@ export function FlyoutMenu({items}: IProps) {
                                 .replaceAll(/[\s']/g, '-')}
             >
               {name}</Link>
+              <div className={styles.decorLine}></div>
           </li>
         ))}
       </ul>

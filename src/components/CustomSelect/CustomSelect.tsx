@@ -3,14 +3,15 @@ import styles from "./customselect.scss";
 
 interface ICostumSelect {
   getAmount: (amount: number) => void;
+  value?: number
 }
 
-export function CustomSelect({ getAmount }: ICostumSelect) {
+export function CustomSelect({ getAmount, value=1 }: ICostumSelect) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<String | null>(null);
+  const [selectedOption, setSelectedOption] = useState<String | null>(String(value));
   const ref = useRef<HTMLDivElement>(null);
 
-  const options = ['1','2','3','4','5', '6', '7', '8', '9', '10+'];
+  const options = ['1','2','3','4','5', '6', '7', '8', '9', '10'];
 
   const toggling = () => setIsOpen(!isOpen);
   const handleOptionClicked = (value: string) => {

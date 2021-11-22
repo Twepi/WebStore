@@ -1,6 +1,4 @@
-import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
-import { splitBsPropsAndOmit } from 'react-bootstrap/lib/utils/bootstrapUtils';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { addToCart } from '../../store/cart/actions';
@@ -57,10 +55,6 @@ export function ProductPage() {
       amount: amount,
       size: size,
     }));
-  }
-
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setAmount(Number(event.target.value));
   }
 
   return (

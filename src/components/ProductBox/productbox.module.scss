@@ -7,10 +7,10 @@ $shadow: $malachite;
   margin: 0 .75rem 8rem;
   box-shadow: 0 0 0 0 rgba($shadow, 0.5);
 	transition: box-shadow 150ms ease-out;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  // padding-top: 2rem;
+  // padding-bottom: 2rem;
 	&:hover {
-		box-shadow: 0 0 0 4px rgba($shadow, 0.5);
+		box-shadow: 0 0 0 6px rgba($shadow, 0.5);
 	}
  
 }

@@ -1,10 +1,4 @@
-$persian-rose: #ff1ead;
-$malachite: #53dd6c;
 $french-violet: #6622cc;
-$wild-blue-yonder: #b8b8d1;
-
-$shadow: $french-violet; 
-
 
 .container {
   position: absolute;
@@ -18,40 +12,51 @@ $shadow: $french-violet;
   white-space: nowrap;
   text-transform: uppercase;
 
+  animation: growDown .3s ease-in-out forwards;
+
   top: 5rem;
 
-  
+  .listContainer {
+    :not(:last-child) {
+      margin-bottom: 2.7rem;
+    }
+  }
+
   li {
     position: relative;
     border-bottom: 2px solid transparent;
-    transform: tran;
+    
+    &:hover > *{
+      font-weight: 900;
+    }
+
     &:hover {
-      
-      animation: showLine .3s ease-in forwards;
-    }
-    &:focus{
-      color: red;
+      .decorLine {
+        transform: scaleX(1);
+      }
     }
 
+    .decorLine {
+      width: 100%;
+      height: 2px;
+      background-color: $french-violet;
+      position: absolute;
+      bottom: 0;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
   }
 }
 
-@keyframes showLine {
-  from {
-    width: 0;
-    border-color: $french-violet;
+@keyframes growDown {
+  0% {
+    transform: translateX(-15%);
+    opacity: 0;
+
   }
 
-  to {
-    width: 100%;
-    border-color: $french-violet;
-  }
-
-  
-}
-
-.listContainer {
-  :not(:last-child) {
-    margin-bottom: 2.7rem;
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
   }
 }
