@@ -18,6 +18,16 @@
   > * {
     align-self: center;
   }
+
+  span {
+    color: white;
+    font-size: 1.6rem;
+    font-style: Muli, sans-serif;
+
+    &:hover {
+      font-weight: 700;
+    }
+  }
 }
 
 .logo {
