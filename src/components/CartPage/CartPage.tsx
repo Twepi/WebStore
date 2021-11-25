@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { ICartProduct } from '../../store/cart/actions';
 import { CartItem } from '../CartItem';
+import { FinalForm } from '../FinalForm';
 import styles from './cartpage.module.scss';
 
 export function CartPage() {
@@ -27,7 +28,7 @@ export function CartPage() {
         ))}
       </div>
 
-      <div></div>
+      <FinalForm/>
     </div>
   );
 }

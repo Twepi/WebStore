@@ -1,0 +1,31 @@
+.container {
+  background-color: #f6f6f8;
+  padding: 2rem;
+  height: min-content;
+  margin-left: 2rem;
+  position: relative;
+
+  h1 {
+    font-size: 3.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .textFlex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  .separate {
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.15);
+    margin-top: 1.5rem; 
+    margin-bottom: 1.5rem; 
+  }
+}

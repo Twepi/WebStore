@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { LoaderAnim } from '../LoaderAnim';
 import { ProductBox } from '../ProductBox';

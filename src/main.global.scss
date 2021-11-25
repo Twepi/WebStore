@@ -65,3 +65,13 @@ button {
 *::before {
   box-sizing: border-box;
 }
+
+h1 {
+  font-size: 4.2rem;
+  line-height: 1.17021;
+  font-weight: 700;
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
+  color: inherit;
+  letter-spacing: 0.02em;
+}

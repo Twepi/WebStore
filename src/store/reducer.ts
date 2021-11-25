@@ -1,5 +1,5 @@
 import { Reducer } from "react";
-import { AddToCartAction, ADD_TO_CART, CartAction, DEL_FROM_CART, ICartProduct } from "./cart/actions";
+import { AddToCartAction, ADD_TO_CART, CartAction, DEL_FROM_CART, ICartProduct, UPDATE_AMOUNT } from "./cart/actions";
 import { IProduct, SetProductAction, SET_PRODUCT } from "./product/actions";
 import { productReducer } from "./product/reducer";
 import { cartReducer } from "./cart/reducer";
@@ -50,6 +50,14 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
           ...state.cart.slice(0, action.id),
           ...state.cart.slice(action.id + 1)
         ]
+      }
+
+    case UPDATE_AMOUNT:
+      return {
+        ...state,
+        cart: state.cart.map(
+          (item, i) => i === action.id ? {...item, amount: action.newAmount} : item
+        )
       }
 
     default:

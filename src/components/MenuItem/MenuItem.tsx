@@ -30,7 +30,7 @@ export function MenuItem({ name, children }: IProps) {
     } else {
       refHover.current.style.outlineColor = "transparent";
     }
-  }, [location.pathname]);
+  }, [location.pathname]);  
 
   return (
     <div

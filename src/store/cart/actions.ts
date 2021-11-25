@@ -31,4 +31,18 @@ export const delFromCart: ActionCreator<DelFromCartAction> = (id: number) => ({
   id
 })
 
-export type CartAction = AddToCartAction | DelFromCartAction;
+export const UPDATE_AMOUNT = 'UPDATE_AMOUNT'
+
+export type UpdateAmount = {
+  type: typeof UPDATE_AMOUNT;
+  id: number;
+  newAmount: number;
+}
+
+export const updateAmount: ActionCreator<UpdateAmount> = (id: number, newAmount: number) => ({
+  type: UPDATE_AMOUNT,
+  id,
+  newAmount
+})
+
+export type CartAction = AddToCartAction | DelFromCartAction | UpdateAmount;
