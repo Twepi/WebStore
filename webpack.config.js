@@ -3,6 +3,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 
 const NODE_ENV = process.env.NODE_ENV;
+const PORT = process.env.PORT || 3000;
 const IS_DEV = NODE_ENV === 'development';
 const IS_PROD = NODE_ENV === 'production';
 const GLOBAL_CSS_REGEXP = /\.global\.s?css$/;
@@ -62,7 +63,7 @@ module.exports = {
         // new DefinePlugin({ 'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'` }),
     ],
     devServer: {
-        port: 3000,
+        port: PORT,
         open: true,
         hot: IS_DEV,
         historyApiFallback: true,
