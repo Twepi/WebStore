@@ -15,6 +15,7 @@ import { rootReducer } from './store';
 import { Provider } from 'react-redux';
 import { CartPage } from './components/CartPage';
 import { LoaderAnim } from './components/LoaderAnim';
+import { CheckoutPage } from './components/CheckoutPage';
 
 // @ts-ignore
 const store = createStore(rootReducer, composeWithDevTools(
@@ -99,6 +100,10 @@ export function AppComponent() {
 
         <Route path='/cart'>
           <CartPage/>
+        </Route>
+
+        <Route path='/checkout'>
+          <CheckoutPage/>
         </Route>
 
         <Footer />

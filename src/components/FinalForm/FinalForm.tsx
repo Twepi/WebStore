@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { RootState } from "../../store";
 import { ICartProduct } from "../../store/cart/actions";
 import styles from "./finalform.module.scss";
@@ -15,7 +16,7 @@ export function FinalForm() {
     products.forEach(
       (item) => (sum += item.amount * Number(item.price.replace("$", "")))
     );
-    setSummary(sum)
+    setSummary(sum);
   });
 
   return (
@@ -29,6 +30,7 @@ export function FinalForm() {
         Shipping $ taxes are calculated at checkout
       </span>
       <div className={styles.separate}></div>
+      <Link to="/checkout" className={styles.button}>checkout</Link>
     </div>
   );
 }

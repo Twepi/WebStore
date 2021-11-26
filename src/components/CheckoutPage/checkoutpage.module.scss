@@ -1,0 +1,23 @@
+.container {
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 80%;
+  margin: 0 auto;
+
+  h2 {
+    font-family: inherit;
+    font-weight: 400;
+    text-transform: Uppercase;
+    font-size: 2.8rem;
+  }
+
+  legend {
+    color: black;
+    font-size: 1.6rem;
+    font-family: Muli, sans-serif;
+    margin-bottom: .8rem; 
+    font-weight: bold;
+  }
+}

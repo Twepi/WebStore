@@ -28,4 +28,26 @@
     margin-top: 1.5rem; 
     margin-bottom: 1.5rem; 
   }
+  
+  .button {
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: .13rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+    max-width: 50rem;
+    width: 100%;
+    border-radius: 22px;
+    border: 0;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 35px;
+
+    &:hover {
+      background-color: rgb(49, 49, 49);
+    }
+  }
 }
