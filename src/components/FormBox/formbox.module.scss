@@ -1,6 +1,7 @@
 $valid-background-color: #e8f0fe;
 
 .container {
+  position: relative;
   input {
     font-size: 1.6rem;
     width: 100%;
@@ -23,6 +24,13 @@ $valid-background-color: #e8f0fe;
     &:invalid {
       border-color: red;
     }
+  }
 
+  span {
+    position: absolute;
+    color: #ee2761;
+    font-size: 1.3rem;
+    bottom: -.5rem;
+    left: 0;
   }
 }

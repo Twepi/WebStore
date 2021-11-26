@@ -11,6 +11,7 @@
     font-weight: 400;
     text-transform: Uppercase;
     font-size: 2.8rem;
+    margin-bottom: 3rem;
   }
 
   legend {
@@ -19,5 +20,11 @@
     font-family: Muli, sans-serif;
     margin-bottom: .8rem; 
     font-weight: bold;
+  }
+
+  .divideBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
   }
 }
