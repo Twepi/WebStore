@@ -1,52 +1,54 @@
 import React from 'react';
-import { FormBox } from '../FormBox';
 import styles from './checkoutpage.module.scss'
 
 export function CheckoutPage() {
+
+
+
+
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
         <h2>checkout</h2>
           <legend>Contact info</legend>
-          <FormBox
+          <input
             type='email'
             placeholder='Email address'
-            errorMessage='Enter a valid email address'
           />
           <legend>Shipping info</legend>
-          <FormBox
+          <input
             type='name'
             placeholder='Name'
           />
-          <FormBox
+          <input
             type='text'
             placeholder='Streer address'
           />
-          <FormBox
+          <input
             type='text'
             placeholder='Apt / Suite / Other (optional)'
           />
           <div className={styles.divideBox}>
-            <FormBox
+            <input
               type='text'
               placeholder='City'
             />
-            <FormBox
+            <input
               type='text'
               placeholder='Province'
             />
           </div>
           <div className={styles.divideBox}>
-            <FormBox
+            <input
               type='text'
               placeholder='Postal Code'
             />
-            <FormBox
+            <input
               type='text'
               placeholder='Country'
             />
           </div>
-          <FormBox
+          <input
             type='text'
             placeholder='Phone Number'
           />
