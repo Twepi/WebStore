@@ -55,13 +55,32 @@ $valid-background-color: #e8f0fe;
     }
   }
 
-  // span {
-  //   position: absolute;
-  //   color: #ee2761;
-  //   font-size: 1.3rem;
-  //   bottom: -.5rem;
-  //   left: 0;
-  // }
+  .errorMessage {
+    padding: 1.5rem;
+    background-color: #ee2761;
+    border-radius: .3rem;
+    margin: 1rem auto;
+    text-align: left;
+    width: 100%;
+
+    & > * {
+      color: white;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+  }
+
+  .successMessage {
+    padding: 1.5rem;
+    background-color: #53DD6C;
+    border-radius: .3rem;
+    margin: 1rem auto;
+    text-align: left;
+    width: 100%;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
 
   .btn {
     background-color: #212020;

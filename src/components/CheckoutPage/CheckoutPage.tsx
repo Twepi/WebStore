@@ -132,10 +132,15 @@ export function CheckoutPage() {
       <form onSubmit={(event) => {handleSubmit(event); setIsSubmitted(true)}} className={styles.formContainer}>
         <h2>checkout</h2>
         {!isFormValid && isSubmitted && (
-          <div>
+          <div className={styles.errorMessage}>
             {errors.map((value, index) => (
               <div key={index}>{value}</div>
             ))}
+          </div>
+        )}
+        {isFormValid && isSubmitted && (
+          <div className={styles.successMessage}>
+            Your order was successfully submitted!
           </div>
         )}
           <legend>Contact info</legend>
