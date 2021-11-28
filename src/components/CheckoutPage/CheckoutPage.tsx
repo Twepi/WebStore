@@ -1,9 +1,12 @@
+
 import React, { ReactChild, SetStateAction, useRef, useState } from 'react';
+
 import styles from './checkoutpage.module.scss'
 
 let errors: string[] = []
 
 export function CheckoutPage() {
+
   const [isFormValid, setIsFormValid] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
@@ -127,6 +130,7 @@ export function CheckoutPage() {
   }
 
 
+
   return (
     <div className={styles.container}>
       <form onSubmit={(event) => {handleSubmit(event); setIsSubmitted(true)}} className={styles.formContainer}>
@@ -162,6 +166,7 @@ export function CheckoutPage() {
               value={cityValue}
               type='text'
               placeholder='City'
+              getFullValidity={callbacks[4]}
             />
             <input
               name='country'
@@ -171,6 +176,7 @@ export function CheckoutPage() {
               value={countryValue}
               type='text'
               placeholder='Country'
+              getFullValidity={callbacks[7]}
             />
           </div>
           <input
@@ -181,6 +187,7 @@ export function CheckoutPage() {
             value={phoneValue}
             type='text'
             placeholder='Phone Number'
+            getFullValidity={callbacks[8]}
           />
           <button type="submit" className={styles.btn}>Place Your Order</button>
       </form>
