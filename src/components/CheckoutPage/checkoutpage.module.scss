@@ -1,3 +1,5 @@
+$valid-background-color: #e8f0fe;
+
 .container {
   padding-top: 12rem;
   padding-bottom: 12rem;
@@ -46,20 +48,20 @@
 
     &:focus {
       border-color: rgb(0, 202, 202);
-      
+
       &[aria-invalid] {
         border-color: red;
       }
     }
   }
 
-  span {
-    position: absolute;
-    color: #ee2761;
-    font-size: 1.3rem;
-    bottom: -.5rem;
-    left: 0;
-  }
+  // span {
+  //   position: absolute;
+  //   color: #ee2761;
+  //   font-size: 1.3rem;
+  //   bottom: -.5rem;
+  //   left: 0;
+  // }
 
   .btn {
     background-color: #212020;
@@ -73,5 +75,3 @@
     width: 100%;
   }
 }
-
-$valid-background-color: #e8f0fe;

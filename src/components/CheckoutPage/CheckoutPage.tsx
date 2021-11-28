@@ -1,48 +1,54 @@
-import React, { SetStateAction, useState } from 'react';
+import React, { ReactChild, SetStateAction, useRef, useState } from 'react';
 import styles from './checkoutpage.module.scss'
 
-let errors:{name: string, error: string}[] = []
+let errors: string[] = []
 
 export function CheckoutPage() {
-  
-
   const [isFormValid, setIsFormValid] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const [emailValue, setEmailValue ] = useState('')
   const [nameValue, setNameValue] = useState('')
   const [cityValue, setCityValue] = useState('')
   const [countryValue, setCountryValue] = useState('')
   const [phoneValue, setPhoneValue] = useState('')
 
-  const [emailIsTouched, setEmailIsTouched] = useState(false)
   const [nameIsTouched, setNameIsTouched] = useState(false)
   const [cityIsTouched, setCityIsTouched] = useState(false)
   const [countryIsTouched, setCountryIsTouched] = useState(false)
   const [phoneIsTouched, setPhoneIsTouched] = useState(false)
 
-  const [emailValid, setEmailValid] = useState(false)
   const [nameValid, setNameValid] = useState(false)
   const [cityValid, setCityValid] = useState(false)
   const [countryValid, setCountryValid] = useState(false)
   const [phoneValid, setPhoneValid] = useState(false)
 
+  const [nameError, setNameError] = useState<Set<string>>(new Set())
+  const [cityError, setCityError] = useState<Set<string>>(new Set())
+  const [countryError, setCountryError] = useState<Set<string>>(new Set())
+  const [phoneError, setPhoneError] = useState<Set<string>>(new Set())
 
-  const checkValidityEmail = (email: string, setValid: React.Dispatch<SetStateAction<boolean>>) => {
-    if (email.split("").filter(x => x === "@").length !== 1) {
-      errors.push({name: 'email', error: 'Email should contain a @'})
-      setValid(false)
-    } else if (email.indexOf(".") === -1) {
-      errors.push({name: 'email', error: "Email should contain at least one dot"});
+
+  const checkValidityName = (str: string, setValid: React.Dispatch<SetStateAction<boolean>>) => {
+    if (/\d/.test(str)) {
+      setNameError(nameError.add("Name can't contain numbers"))
       setValid(false)
     } else {
       setValid(true)
     }
   }
 
-  const checkValidityText = (str: string, setValid: React.Dispatch<SetStateAction<boolean>>, name: string) => {
+  const checkValidityCity = (str: string, setValid: React.Dispatch<SetStateAction<boolean>>) => {
     if (/\d/.test(str)) {
-      errors.push({name: name, error: str + " can't contain a number"})
+      setCityError(cityError.add("City can't contain numbers"))
+      setValid(false)
+    } else {
+      setValid(true)
+    }
+  }
+
+  const checkValidityCountry = (str: string, setValid: React.Dispatch<SetStateAction<boolean>>) => {
+    if (/\d/.test(str)) {
+      setCountryError(countryError.add("Country can't contain numbers"))
       setValid(false)
     } else {
       setValid(true)
@@ -51,69 +57,119 @@ export function CheckoutPage() {
 
   const checkValidityPhone = (str: string, setValid: React.Dispatch<SetStateAction<boolean>>) => {
     if (/[a-zA-Z]/g.test(str)) {
-      errors.push({name: 'phone', error: str + " can't contain a letter"})
+      setPhoneError(phoneError.add("Phone can't contain letters"))
       setValid(false)
     } else {
       setValid(true)
     }
   }
 
-  const checkIsFormValid = () => {
-    let valid = emailValue !== '' && nameValue !== '' && cityValue !== '' && countryValue !== '' && phoneValue !== '' &&
-                emailValid && nameValid && cityValid && countryValid && phoneValid
+  const checkEmptyField = () => {
+    if (nameValue === '') {
+      setNameError(nameError.add("Name field is required"))
+      setNameValid(false)
+    }
+    if (cityValue === '') {
+      setCityError(cityError.add("City field is required"))
+      setCityValid(false)
+    }
+    if (countryValue === '') {
+      setCountryError(countryError.add("Country field is required"))
+      setCountryValid(false)
+    }
+    if (phoneValue === '') {
+      setPhoneError(phoneError.add("Phone field is required"))
+      setPhoneValid(false)
+    }
+  }
+
+  const purgeErrors = () => {
+    setNameError(new Set())
+    setCityError(new Set())
+    setCountryError(new Set())
+    setPhoneError(new Set())
+  }
+
+  const updateAllValues = (event: React.FormEvent<HTMLFormElement>) => {
+    // @ts-ignore
+    setNameValue(event.target.name.value)
+    // @ts-ignore
+    setCityValue(event.target.city.value)
+    // @ts-ignore
+    setCountryValue(event.target.country.value)
+    // @ts-ignore
+    setPhoneValue(event.target.phone.value)
+  }
+  
+  const checkValidityBeforeSubmit = () => {
+    checkValidityName(nameValue, setNameValid)
+    checkValidityCity(cityValue, setCityValid)
+    checkValidityCountry(countryValue, setCountryValid)
+    checkValidityPhone(phoneValue, setPhoneValid)
+  }
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    errors = []
+
+    updateAllValues(event)
+    checkValidityBeforeSubmit()
+    checkEmptyField() 
+
+    let valid = nameValid && cityValid && countryValid && phoneValid
     setIsFormValid(valid)
-    console.log(errors)
+
+    for (let value of [...nameError, ...cityError, ...countryError, ...phoneError]) {
+      errors.push(value)
+    }
+
+    purgeErrors()
   }
 
 
   return (
     <div className={styles.container}>
-      <div className={styles.formContainer}>
+      <form onSubmit={(event) => {handleSubmit(event); setIsSubmitted(true)}} className={styles.formContainer}>
         <h2>checkout</h2>
         {!isFormValid && isSubmitted && (
           <div>
-            {errors.map((value) => {
-              <span>{value.error}</span>
-            })}
+            {errors.map((value, index) => (
+              <div key={index}>{value}</div>
+            ))}
           </div>
         )}
           <legend>Contact info</legend>
           <input
-            onBlur={() => {setEmailIsTouched(true)}}
-            aria-invalid={((!emailValid && emailValue) && emailIsTouched ) ? 'true' : undefined}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setEmailValue(event.target.value); checkValidityEmail(emailValue, setEmailValid)}}
-            value={emailValue}
-            type='email'
-            placeholder='Email address'
-          />
-          <legend>Shipping info</legend>
-          <input
+            name='name'
             onBlur={() => {setNameIsTouched(true)}}
             aria-invalid={((!nameValid && nameValue) && nameIsTouched ) ? 'true' : undefined}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setNameValue(event.target.value); checkValidityText(nameValue, setNameValid, 'Name')}}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setNameValue(event.target.value); checkValidityName(nameValue, setNameValid)}}
             value={nameValue}
-            type='name'
+            type='text'
             placeholder='Name'
           />
           <div className={styles.divideBox}>
             <input
+              name='city'
               onBlur={() => {setCityIsTouched(true)}}
               aria-invalid={((!cityValid && cityValue) && cityIsTouched ) ? 'true' : undefined}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setCityValue(event.target.value); checkValidityText(cityValue, setCityValid, 'City')}}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setCityValue(event.target.value); checkValidityCity(cityValue, setCityValid)}}
               value={cityValue}
               type='text'
               placeholder='City'
             />
             <input
+              name='country'
               onBlur={() => {setCountryIsTouched(true)}}
               aria-invalid={((!countryValid && countryValue) && countryIsTouched ) ? 'true' : undefined}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setCountryValue(event.target.value); checkValidityText(countryValue, setCountryValid, 'Country')}}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setCountryValue(event.target.value); checkValidityCountry(countryValue, setCountryValid)}}
               value={countryValue}
               type='text'
               placeholder='Country'
             />
           </div>
           <input
+            name='phone'
             onBlur={() => {setPhoneIsTouched(true)}}
             aria-invalid={((!phoneValid && phoneValue) && phoneIsTouched ) ? 'true' : undefined}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {setPhoneValue(event.target.value); checkValidityPhone(phoneValue, setPhoneValid)}}
@@ -121,8 +177,8 @@ export function CheckoutPage() {
             type='text'
             placeholder='Phone Number'
           />
-          <button onClick={() => {checkIsFormValid(); setIsSubmitted(true)}} type="submit" className={styles.btn}>Place Your Order</button>
-      </div>
+          <button type="submit" className={styles.btn}>Place Your Order</button>
+      </form>
     </div>
   );
 }
