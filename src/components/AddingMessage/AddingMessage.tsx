@@ -8,7 +8,7 @@ export function AddingMessage() {
   if (!node) return null;
 
   node.style.position = 'fixed';
-  node.style.top = '15px';
+  node.style.top = '10px';
   node.style.zIndex = '3';
   node.style.left = '15%';
 
