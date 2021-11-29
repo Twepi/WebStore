@@ -5,6 +5,7 @@ import { addToCart } from '../../store/cart/actions';
 import { IProduct } from '../../store/product/actions';
 import { css } from '../../utils';
 import { AccrodionButton } from '../AccordionButton';
+import { AddingMessage } from '../AddingMessage';
 import { CustomSelect } from '../CustomSelect';
 import { SizeBox } from '../SizeBox';
 import styles from './productpage.module.scss';
@@ -14,6 +15,10 @@ export function ProductPage() {
   const [size, setSize] = useState('S(4)');
   const [amount, setAmount] = useState(1);
   const dispatch = useDispatch();
+  
+  // this is pathetic and embarrasing but i don't know another way to deal with it = )
+  const [generateMessage, setGenerateMessage] = useState(false);
+  const [canIGenerateMessage, setCanIGenerateMessage] = useState(true);
 
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -55,6 +60,15 @@ export function ProductPage() {
       amount: amount,
       size: size,
     }));
+
+    // yeah that's was the case... i can't append component to ref, too bad i guess
+    // decided to f*ck my brain out and came up with this monstrosity
+    if (canIGenerateMessage) {
+      setGenerateMessage(true);
+      setTimeout(() => {setGenerateMessage(false)}, 5000)
+      setCanIGenerateMessage(false)
+      setTimeout(() => {setCanIGenerateMessage(true)}, 5100)
+    }
   }
 
   return (
@@ -106,7 +120,7 @@ export function ProductPage() {
             </div>
           </div>
         </form>
-
+        {generateMessage ? <AddingMessage /> : null}
         <div>
           <AccrodionButton>Description</AccrodionButton>
           <AccrodionButton>Product Details</AccrodionButton>

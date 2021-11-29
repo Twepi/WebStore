@@ -6,7 +6,7 @@ import { cartReducer } from "./cart/reducer";
 
 export type RootState = {
   product: IProduct,
-  cart: ICartProduct[]
+  cart: ICartProduct[],
 }
 
 const initialState: RootState = {

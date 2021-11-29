@@ -1,4 +1,5 @@
 import React, { ReactChild, SetStateAction, useRef, useState } from 'react';
+import { OrderSummary } from '../OrderSummary';
 import styles from './checkoutpage.module.scss'
 
 let errors: string[] = []
@@ -184,6 +185,8 @@ export function CheckoutPage() {
           />
           <button type="submit" className={styles.btn}>Place Your Order</button>
       </form>
+
+      <OrderSummary />
     </div>
   );
 }
