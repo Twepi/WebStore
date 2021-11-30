@@ -1,4 +1,4 @@
-import React, { ReactChild, SetStateAction, useRef, useState } from 'react';
+import React, { SetStateAction, useState } from 'react';
 import { OrderSummary } from '../OrderSummary';
 import styles from './checkoutpage.module.scss'
 
