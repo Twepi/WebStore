@@ -30,7 +30,7 @@ export const data = {
   },
 
   "menProd": {
-    "img": "https://tommy-europe.scene7.com/is/image/TommyEurope/UM0UM02350_DW5_main?$main$",
+    "img": "https://cache.mrporter.com/variants/images/2009602888254/in/w1200_q60.jpg",
     "name": "Lounge Ultra Soft Organic T-Shirt",
     "desc": "This product contains independently certified organic cotton",
     "price": "$59"

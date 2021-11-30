@@ -27,7 +27,10 @@ export function OrderSummary() {
             <img src={item.img} alt="" />
             <div className={styles.itemDescCont}>
               <div className={styles.itemDesc}>{item.desc}</div>
-              <div className={styles.itemSize}>{item.size}</div>
+              <div className={styles.itemCont}>
+                <div className={styles.itemSize}>{item.size}</div>
+                <div className={styles.itemColor}>{item.color}</div>
+              </div>
             </div>
             <div className={styles.priceCont}>
               <div className={styles.amount}>{item.amount + ' x '}</div>

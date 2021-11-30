@@ -6,6 +6,7 @@ import { IProduct } from '../../store/product/actions';
 import { css } from '../../utils';
 import { AccrodionButton } from '../AccordionButton';
 import { AddingMessage } from '../AddingMessage';
+import { ColorBox } from '../ColorBox';
 import { CustomSelect } from '../CustomSelect';
 import { SizeBox } from '../SizeBox';
 import styles from './productpage.module.scss';
@@ -13,10 +14,10 @@ import styles from './productpage.module.scss';
 export function ProductPage() {
   const productInfo = useSelector<RootState, IProduct>(state => state.product)
   const [size, setSize] = useState('S(4)');
+  const [color, getColor] = useState('Black');
   const [amount, setAmount] = useState(1);
   const dispatch = useDispatch();
   
-  // this is pathetic and embarrasing but i don't know another way to deal with it = )
   const [generateMessage, setGenerateMessage] = useState(false);
   const [canIGenerateMessage, setCanIGenerateMessage] = useState(true);
 
@@ -57,12 +58,11 @@ export function ProductPage() {
       name: productInfo.name,
       desc: productInfo.desc,
       price: productInfo.price,
+      color: color,
       amount: amount,
       size: size,
     }));
 
-    // yeah that's was the case... i can't append component to ref, too bad i guess
-    // decided to f*ck my brain out and came up with this monstrosity
     if (canIGenerateMessage) {
       setGenerateMessage(true);
       setTimeout(() => {setGenerateMessage(false)}, 5000)
@@ -91,10 +91,11 @@ export function ProductPage() {
         <form>
           <div style={{marginBottom: '2rem'}}>
             <span className={styles.label}>color</span>
-            <div className={styles.colorBox}>
-              <div className={styles.colorCircle}></div>
-              <span>Light Pink</span>
-            </div>
+            <ColorBox getColor={getColor} name='Light Pink' color='rgb(255, 213, 213)'/>
+            <ColorBox getColor={getColor} name='Orange'/>
+            <ColorBox getColor={getColor} name='Blue'/>
+            <ColorBox getColor={getColor} name='Black'/>
+            <ColorBox getColor={getColor} name='Red'/>
           </div>
 
           <div style={{marginBottom: '3rem'}}>

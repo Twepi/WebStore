@@ -1,0 +1,37 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #b8bdc5;
+  height: 4.4rem;
+  padding: 0 1.5rem;
+  border-radius: 3px;
+  margin-right: 1rem;
+  position: relative;
+  margin-bottom: 1rem;
+  background-color: white;
+  color: black;
+}
+
+span {
+  color: inherit;
+}
+
+.colorCircle {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 0 rgb(0 0 0 / 40%);
+  background-color: transparent;
+}
+
+.colorInput {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 0px;
+}

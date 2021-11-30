@@ -4,6 +4,7 @@ import { IProduct } from "../product/actions";
 export interface ICartProduct extends IProduct {
   amount: number;
   size: string;
+  color: string;
   id: number;
 }
 

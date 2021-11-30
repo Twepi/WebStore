@@ -47,6 +47,17 @@
       color: #b8bdc5;
       font-size: 1.4rem;
       font-weight: bold;
+
+      &::after {
+        content: '•';
+        padding: 0 0.3rem;
+      }
+    }
+    
+    .itemColor {
+      color: #b8bdc5;
+      font-size: 1.4rem;
+      font-weight: bold;
     }
   }
 

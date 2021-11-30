@@ -4,7 +4,7 @@ import { delFromCart, ICartProduct, updateAmount } from '../../store/cart/action
 import { CustomSelect } from '../CustomSelect';
 import styles from './cartitem.module.scss'
 
-export function CartItem({ name, id, desc, img, price, amount, size }: ICartProduct) {
+export function CartItem({ name, id, desc, img, price, amount, size, color }: ICartProduct) {
 
   const [ amountNow, setAmountNow ] = useState(amount);
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ export function CartItem({ name, id, desc, img, price, amount, size }: ICartProd
           <div className={styles.items}>
             <div style={{fontSize: '1.6rem', margin: '1rem 0'}}>{desc}</div>
             <div>Size - {size}</div>
-            <div>Color - Pink</div>
+            <div>Color - {color}</div>
           </div>
           <button onClick={removeFromCart} className={styles.remove}>Remove</button>
         </div>

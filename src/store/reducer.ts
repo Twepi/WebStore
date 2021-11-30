@@ -37,6 +37,7 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
         name: "",
         desc: "",
         price: "",
+        color: "",
         amount: 0,
         size: "",
         id: -1

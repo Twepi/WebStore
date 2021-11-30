@@ -21,6 +21,7 @@ export function CartPage() {
             name={item.name}
             desc={item.desc}
             img={item.img}
+            color={item.color}
             price={item.price}
             amount={item.amount}
             size={item.size}

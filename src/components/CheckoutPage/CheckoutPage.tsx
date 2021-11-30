@@ -57,7 +57,7 @@ export function CheckoutPage() {
   }
 
   const checkValidityPhone = (str: string, setValid: React.Dispatch<SetStateAction<boolean>>) => {
-    if (/[a-zA-Z]/g.test(str)) {
+    if (/[a-zA-Za-zа-яё ]/gui.test(str)) {
       setPhoneError(phoneError.add("Phone can't contain letters"))
       setValid(false)
     } else {

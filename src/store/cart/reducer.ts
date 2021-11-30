@@ -13,6 +13,7 @@ export const cartReducer: Reducer<ICartProduct, AddToCartAction> = (state, actio
         img: action.product.img,
         name: action.product.name,
         desc: action.product.desc,
+        color: action.product.color,
         price: action.product.price,
         amount: action.product.amount,
         size: action.product.size,
