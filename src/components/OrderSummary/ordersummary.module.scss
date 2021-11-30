@@ -1,16 +1,97 @@
 .container {
 
-  span {
+  img {
+    max-width: 15%;
+  }
+
+  .headerCont {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     text-transform: uppercase;
     font-weight: 400;
     font-size: 1.8rem;
     margin-bottom: 1.2rem;
-  }
+    
+      .modifyOrder {
+        font-size: 1.3rem;
+        color: #ee2761;
+      }
+    }
 
   .divideLine {
     width: 100%;
     opacity: .15;
     height: 1px;
     background-color: #6c7478;
+    margin-bottom: 1.2rem;
+  }
+
+  .itemCont {
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .itemDescCont {
+    flex-grow: 1;
+    padding-left: 1.6rem;
+    
+    .itemDesc {
+      font-weight: bold;
+      font-size: 1.6rem;
+    }
+
+    .itemSize {
+      color: #b8bdc5;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+  }
+
+  .priceCont {
+    display: flex;
+    align-items: center;
+
+    .amount {
+      color: #b8bdc5;
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-right: 0.4rem;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+
+  .subTotalCont {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+
+    div {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+  }
+
+  .orderTotalCont {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+
+    div {
+      font-size: 1.8rem;
+      font-weight: bold;
+
+      &:nth-child(2) {
+        color: #32b259;
+      }
+    }
   }
 }
