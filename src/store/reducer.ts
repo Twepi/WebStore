@@ -3,10 +3,12 @@ import { AddToCartAction, ADD_TO_CART, CartAction, DEL_FROM_CART, ICartProduct, 
 import { IProduct, SetProductAction, SET_PRODUCT } from "./product/actions";
 import { productReducer } from "./product/reducer";
 import { cartReducer } from "./cart/reducer";
+import { SetLoggedAction, SET_LOGGED } from "./login/action";
 
 export type RootState = {
   product: IProduct,
   cart: ICartProduct[],
+  isLogged: Boolean,
 }
 
 const initialState: RootState = {
@@ -17,9 +19,10 @@ const initialState: RootState = {
     price: "",
   },
   cart: [],
+  isLogged: false
 }
 
-type MyAction = SetProductAction | CartAction;
+type MyAction = SetProductAction | CartAction | SetLoggedAction;
 
 export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, action) => {
   switch (action.type) {
@@ -59,6 +62,12 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
         cart: state.cart.map(
           (item, i) => i === action.id ? {...item, amount: action.newAmount} : item
         )
+      }
+
+    case SET_LOGGED:
+      return {
+        ...state,
+        isLogged: action.isLogged
       }
 
     default:

@@ -1,22 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { RootObject } from '../../interfaces/products';
 import { LoaderAnim } from '../LoaderAnim';
 import { ProductBox } from '../ProductBox';
 import styles from './productgrid.module.scss';
 
 interface IProps {
-  data: {
-    img: string;
-    name: string;
-    desc: string;
-    price: string;
-  }
+  data: RootObject[]
 }
 
-export function ProductGrid({data}: IProps) {
+export function ProductGrid({ data }: IProps) {
   const [products, setProducts] = useState<any[]>([...Array(8)]);
   const [loading, setLoading] = useState(false)
 
+
   const bottomOfList = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {console.log(data)}, [])
 
   useEffect(() => {
     async function load() {
@@ -70,20 +69,24 @@ export function ProductGrid({data}: IProps) {
         <div className={styles.loading}>Нет ни одного поста</div>
       )}
 
-      {products.map((_, index) => (
+      {Object.values(data).map((el, index) => 
+      {
+        return (
+        
         <ProductBox
             key={index}
-            img={data.img}
-            name={data.name}
-            desc={data.desc}
-            price={data.price}
+            img={el.fields.img_url}
+            name={el.fields.product_name}
+            desc={el.fields.description}
+            price={'$' + String (el.fields.price)}
         />
-      ))}
+      )})}
+      
 
-      <div ref={bottomOfList}></div>
+      {/* <div ref={bottomOfList}></div>
       {loading && (
         <LoaderAnim/>
-      )}
+      )} */}
     </div>
   );
 }

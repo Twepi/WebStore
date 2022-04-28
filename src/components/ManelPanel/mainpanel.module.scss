@@ -23,7 +23,10 @@
     color: white;
     font-size: 1.6rem;
     font-style: Muli, sans-serif;
-
+    padding-right: 1.6rem;
+    padding-top: .8rem;
+    padding-bottom: .8rem;
+    
     &:hover {
       font-weight: 700;
     }
@@ -73,4 +76,28 @@
 .messageAnchor{
   position: absolute;
   left: 35%;
+}
+
+
+.buttonLogin {
+  font-size: 1.6rem;
+  font-style: Muli, sans-serif;
+  color: white;
+  &:hover {
+    font-weight: 700;
+  }
+
+  width: 91px;
+
+  padding: .8rem 1.6rem;
+}
+  
+.buttonSignup {
+  @extend .buttonLogin;
+  // padding: 1.2rem 2rem;
+  color: white; 
+  // background-color: black;
+  // border-radius: 1rem;
+  // font-weight: bold;
+
 }
