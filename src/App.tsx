@@ -11,10 +11,11 @@ import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { rootReducer } from './store';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import { CartPage } from './components/CartPage';
 import { CheckoutPage } from './components/CheckoutPage';
 import { RootObject } from './interfaces/products';
+import { setLogged } from './store/login/action';
 
 // @ts-ignore
 const store = createStore(rootReducer, composeWithDevTools(
@@ -40,6 +41,7 @@ export function AppComponent() {
     })()
 
   }, [])
+
 
   return data.length > 1 ? (
 
@@ -128,4 +130,8 @@ export function AppComponent() {
       </BrowserRouter>
     </Provider>
   ) : null;
+}
+
+function dispatch(arg0: any) {
+  throw new Error('Function not implemented.');
 }

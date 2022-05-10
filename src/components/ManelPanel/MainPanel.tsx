@@ -14,6 +14,31 @@ export function MainPanel() {
   const [mode, setMode] = useState('')
   const isLogged = useSelector<RootState, Boolean>(state => state.isLogged)
   const dispatch = useDispatch()
+  
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/api/signintoken/', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          // Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+      })
+      
+      if (response.status === 200) {
+        dispatch(setLogged(true))
+      }
+
+    } catch (error) {
+      console.log('Triggered')
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    handleLogin()
+  }, [])
 
   return (
     <div className={styles.panel}>

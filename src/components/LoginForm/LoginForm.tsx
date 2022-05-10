@@ -36,14 +36,19 @@ export function LoginForm({ setShowLogin, mode }: IProps) {
 
     try {
 
-      const response = await fetch('/api/signin', {
+      const response = await fetch('http://localhost:8000/api/signin/', {
         method: 'POST',
         credentials: 'include',
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          // "Access-Control-Allow-Origin": "http://127.0.0.1:8000",
         },
         body: JSON.stringify(values)
+        // {
+        //   username: 'twep',
+        //   password: '123'
+        // }
       
       })
 
@@ -69,7 +74,7 @@ export function LoginForm({ setShowLogin, mode }: IProps) {
 
     try {
 
-      const response = await fetch('/api/signup', {
+      const response = await fetch('http://localhost:8000/api/signup/', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -77,7 +82,6 @@ export function LoginForm({ setShowLogin, mode }: IProps) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(values)
-      
       })
 
       if (response.status === 200) {
